@@ -3,6 +3,7 @@
 A simple command-line Blackjack game written in Python.
 The player competes against the dealer to reach 21 without going over.
 
+
 🚀 Features
 
 Player can draw or pass cards.
@@ -14,6 +15,7 @@ Ace is always counted as 11 (simplified rules).
 Detects Blackjack (21 on first draw).
 
 Announces winner: You Win / You Lose / Tie.
+
 
 📦 Installation
 
@@ -31,6 +33,7 @@ python --version
 Run the game:
 
 python main.py
+
 
 🎮 How to Play
 
@@ -50,11 +53,13 @@ The dealer draws cards until reaching at least 19.
 
 Whoever is closer to 21 without going over wins.
 
+
 📖 Rules Simplification
 
 The game doesn’t yet handle Ace = 1 or 11 switching (it’s always 11).
 
 No betting system or multiple players (just player vs dealer).
+
 
 🛠️ Project Structure
 blackjack-game/
