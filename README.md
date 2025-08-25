@@ -19,6 +19,7 @@ The player competes against the dealer to reach **21 without going over**.
    ```bash
    git clone https://github.com/your-username/blackjack-game.git
    cd blackjack-game
+# How do I run it? What version of python do I need? Any additional packages needed? Can it run without python?
 
 ---
 
