@@ -26,8 +26,13 @@ while start == "s":
 
     if draw_another_card == "draw":
         additional_card = random.choice(cards)
-        player_cards.append(additional_card)
-        player_score += additional_card
+        if player_score == 20 and additional_card == 11:
+            player_cards.append(1)
+            player_score += 1
+        else:
+            player_cards.append(additional_card)
+            player_score += additional_card
+
         if player_score > 21:
             game.print_score(dealer_cards, dealer_score, player_cards, player_score)
             game.calculate_winner(player_score, dealer_score)
