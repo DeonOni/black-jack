@@ -8,15 +8,15 @@ import art
 
 def calculate_winner(players_hand, dealers_hand):  # this is untestable, arguments are put, nothing is returned
     if players_hand > 21:
-        print("YOU LOSE")
+        return "YOU LOSE"
     elif dealers_hand > 21:
-        print("YOU WIN")
+        return "YOU WIN"
     elif players_hand > dealers_hand:
-        print("YOU WIN")
+        return "YOU WIN"
     elif players_hand < dealers_hand:
-        print("YOU LOSE")
+        return "YOU LOSE"
     else:
-        print("IT\'S A TIE")
+        return "IT\'S A TIE"
 
 def dealer_draw(dealer_score, cards, dealer_cards):
     while dealer_score < 19:
@@ -28,10 +28,9 @@ def dealer_draw(dealer_score, cards, dealer_cards):
 def print_score(dealer_cards, dealer_score, player_cards, player_score):
     # this is untestable, arguments are put, nothing is returned
     # maybe we do not need to rely on console output in the scope of game mechanics
-    print(f"Dealers cards are: {dealer_cards} \n Dealers overall score: {dealer_score}")
-    print(f"Your cards are: {player_cards} \n your overall score: {player_score}")
+    return f"Dealers cards are: {dealer_cards} \n Dealers overall score: {dealer_score}\n Your cards are: {player_cards} \n your overall score: {player_score}"
 
 def black_jack_win():
     # this is untestable, arguments are put, nothing is returned
-    print("You Win!\n")
-    print(art.logo)
+    # fixed
+    return f"You Win!\n{art.logo}"

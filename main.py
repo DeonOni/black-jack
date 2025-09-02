@@ -10,34 +10,36 @@ print(art.logo)
 # hardcode all those sequences of digits this way, use python's generators
 cards = [11,11,11,11, 2,2,2,2, 3,3,3,3, 4,4,4,4, 5,5,5,5, 6,6,6,6, 7,7,7,7, 8,8,8,8, 9,9,9,9, 10,10,10,10, 10,10,10,10, 10,10,10,10, 10,10,10,10,]
 
-# I see a problem here, once you call random.choice, you do not remove an element out of the cards list.
-# I think you better generate a cards list once, shuffle it and access its last element by pop method
+# I see a problem here, once you call random.choice, you do not remove an element out of the cards list. -----> card removal feature will be added in future updates
+# I think you better generate a cards list once, shuffle it and access its last element by pop method -----> list is generated once and at the moment never modified. To be honest i don't see the difference in approach of randomly choosing element from the list. Why should we change logic if result seems to be the same?
 player_cards = [random.choice(cards), random.choice(cards)]
 player_score = sum(player_cards)
 dealer_cards = [random.choice(cards), random.choice(cards)]
 dealer_score = sum(dealer_cards)
 
 while start == "s":  # Do we really need to store it as a separate variable?
-    # Do we even need to force player to press 's'?
+    # Do we even need to force player to press 's'? -----> to be honest not really but this is design choice, maybe it will be changed later
 
     print(f"Your cards are: {player_cards} \n your overall score: {player_score}")
 
     if player_score == 21:
-        game.black_jack_win()
+        print(game.black_jack_win())
         break
 
     print(f"dealers first card is: {dealer_cards[0]}")
 
     # You could use signle brackets ' instead of double to avoid putting \ symbol before " in the text
-    draw_another_card = input("Draw additional card or pass: \n\"draw\" or \"pass\" ").lower()
+    #fixed
+    draw_another_card = input("Draw additional card or pass: 'draw' or 'pass' ").lower()
 
     # We do not check if player provides any other input besides "draw" or "pass"
+    #fixed
     if draw_another_card == "draw":
         additional_card = random.choice(cards)
         if player_score == 20 and additional_card == 11:
-            player_cards.append(1)  # It does not really seem like we need to store any information about cards at all
-            # we are only interested in the score.
-            # If we really want to represent what cards a player currently owns, why don't we use user friendly names
+            player_cards.append(1)  # It does not really seem like we need to store any information about cards at all ----> we need to update player hand to properly show player which cards present in hand
+            # we are only interested in the score. ----> When you play cards in real life you calculate the score in your head, but it does not mean we shouldn't show player his cards
+            # If we really want to represent what cards a player currently owns, why don't we use user-friendly names -----> this feature is under development
             # instead of magic numbers?
             player_score += 1
         else:
@@ -45,13 +47,16 @@ while start == "s":  # Do we really need to store it as a separate variable?
             player_score += additional_card
 
         if player_score > 21:
-            game.print_score(dealer_cards, dealer_score, player_cards, player_score)
-            game.calculate_winner(player_score, dealer_score)
+            print(game.print_score(dealer_cards, dealer_score, player_cards, player_score))
+            print(game.calculate_winner(player_score, dealer_score))
             break
 
     elif draw_another_card == "pass":
         dealer_score = game.dealer_draw(dealer_score, cards, dealer_cards)
-        game.print_score(dealer_cards, dealer_score, player_cards, player_score)
-        game.calculate_winner(player_score, dealer_score)
+        print(game.print_score(dealer_cards, dealer_score, player_cards, player_score))
+        print(game.calculate_winner(player_score, dealer_score))
         break
+    else:
+        print("Invalid input please try again ")
+        continue
 
