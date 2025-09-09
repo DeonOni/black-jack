@@ -8,3 +8,5 @@ logo = r"""
       |  \/ K|                            _/ |                
       `------'                           |__/           
 """
+
+# Do we really need a .py file with a variable name to store text like this?
