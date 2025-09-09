@@ -20,9 +20,10 @@ def calculate_winner(players_hand, dealers_hand):  # this is untestable, argumen
 
 def dealer_draw(dealer_score, cards, dealer_cards):
     while dealer_score < 19:
-        additional_card = random.choice(cards)
-        dealer_cards.append(additional_card)
-        dealer_score += additional_card
+        dealer_additional_card = next(iter(cards))
+        dealer_additional_card_value = cards.pop(dealer_additional_card)
+        dealer_cards.append(dealer_additional_card)
+        dealer_score += dealer_additional_card_value
     return dealer_score
 
 def print_score(dealer_cards, dealer_score, player_cards, player_score):
@@ -34,3 +35,9 @@ def black_jack_win():
     # this is untestable, arguments are put, nothing is returned
     # fixed
     return f"You Win!\n{art.logo}"
+
+def deck_shuffle(cards):
+    unshuffled_deck_list = list(cards.items())
+    random.shuffle(unshuffled_deck_list)
+    shuffled_deck = dict(unshuffled_deck_list)
+    return shuffled_deck
